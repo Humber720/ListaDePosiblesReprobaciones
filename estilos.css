@@ -380,6 +380,43 @@ table th, table td {
     font-size: 0.85rem;
   }
 }
+/* PARA FORSAR BOTONES */
+@media (max-width: 600px) {
+  /* Evita que la tabla sea más ancha que el contenedor */
+  .container {
+    overflow-x: hidden;
+  }
+
+  /* Permite que la tabla se adapte */
+  table {
+    min-width: auto !important;
+    width: 100% !important;
+  }
+
+  /* Celdas y botones adaptativos */
+  #studentTable td:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    width: 100%;
+    padding: 8px 0;
+    margin-right: 0 !important;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+  }
+
+  /* Ajusta celdas para evitar overflow */
+  table th, table td {
+    white-space: normal !important; /* permitir que el texto se divida */
+    font-size: 12px !important;
+    padding: 6px 8px !important;
+  }
+}
+
 
 
 
