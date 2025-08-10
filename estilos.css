@@ -314,3 +314,23 @@ table th, table td {
   }
 }
 
+ /* PARA BOTONES EDITAR Y ELIMINAR */
+@media (max-width: 600px) {
+  /* En la celda de acción, apilar botones verticalmente sin afectar otras celdas */
+  #studentTable td:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch; /* que botones ocupen todo el ancho disponible */
+  }
+
+  /* Solo los botones dentro de la celda acción: ancho 100%, tamaño y padding ajustados */
+  #studentTable td:last-child button {
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 6px 8px;
+    white-space: normal; /* permitir texto en varias líneas si es necesario */
+    box-sizing: border-box;
+  }
+}
+
