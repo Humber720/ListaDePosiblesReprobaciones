@@ -1,0 +1,316 @@
+/* RESET y caja consistente */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ====== BASE ====== */
+:root{
+  --card-bg: #ffffff;
+  --page-bg: #f4f6f8;
+  --accent: #2980b9;
+  --accent-dark: #1f6691;
+  --success: #27ae60;
+  --danger: crimson;
+  --muted: #6b7280;
+  --radius: 12px;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: var(--page-bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+  max-width: 980px;
+  margin: 22px auto;
+  background: var(--card-bg);
+  padding: 26px;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(15,23,42,0.06);
+}
+
+/* Encabezados */
+h1{
+  margin:0 0 6px 0;
+  font-size: 1.6rem;
+  color: #153244;
+  text-align: center;
+}
+.subtitle{
+  margin:0 0 18px 0;
+  color: var(--muted);
+  text-align:center;
+  font-size:0.95rem;
+}
+
+/* ====== FORMULARIO: grid responsive ====== */
+form#studentForm{
+  width:100%;
+  margin-bottom: 14px;
+}
+
+/* grid: 2 columnas en escritorio, 1 en móvil */
+.form-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* clase para forzar campo a ocupar línea completa */
+.full{ grid-column: 1 / -1; }
+
+label{
+  display:block;
+  font-weight:600;
+  font-size:0.95rem;
+  margin-bottom:6px;
+  color:#222;
+}
+
+input[type="text"],
+input[type="number"],
+textarea{
+  width:100%;
+  padding: 10px 12px;
+  border-radius:8px;
+  border:1px solid #d0d7dd;
+  font-size: 0.95rem;
+  background: #fff;
+  outline: none;
+  transition: border-color .18s, box-shadow .12s;
+}
+
+input:focus, textarea:focus{
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(41,128,185,0.08);
+  background: #fbfeff;
+}
+
+/* botones */
+.btn-row{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:8px;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+  border-radius:8px;
+  padding: 10px 16px;
+  font-weight:700;
+  font-size:0.95rem;
+  transition: transform .08s, background .12s;
+}
+
+button:active{ transform: translateY(1px); }
+
+.btn-primary{
+  background: var(--accent);
+  color:#fff;
+}
+.btn-primary:hover{ background: var(--accent-dark); }
+
+.btn-add{
+  background: #0b74b9;
+  color:#fff;
+}
+
+.delete-btn{
+  background: var(--danger);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:0.85rem;
+}
+
+/* Enviar lista - grande y visible */
+.send-container{
+  display:flex;
+  justify-content:center;
+  margin-top:20px;
+}
+#sendList{
+  background: var(--success);
+  color:#fff;
+  padding:14px 26px;
+  font-size:1rem;
+  border-radius:10px;
+  font-weight:800;
+}
+#sendList:hover{ background: #1e8449; }
+
+/* Nota de tabla */
+.table-note{
+  font-size:0.92rem;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+
+/* ====== TABLA ====== */
+/* envoltorio con scroll horizontal en móvil */
+.table-container{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  border: 1px solid #eef2f5;
+  padding: 6px;
+  background: #fff;
+}
+
+/* La tabla ocupa 100% del contenedor scrollable */
+table{
+  width:100%;
+  border-collapse: collapse;
+  min-width: 0; /* importante: evita forzar ancho */
+  background: transparent;
+}
+
+/* celdas */
+th, td{
+  padding:12px 14px;
+  text-align:left;
+  border-bottom: 1px solid #f0f3f6;
+  vertical-align: middle;
+  font-size:0.95rem;
+  word-break: break-word; /* evita overflow por texto largo */
+  white-space: normal;
+}
+
+th{
+  background: #163445;
+  color: #fff;
+  font-weight:700;
+  position: sticky;
+  top:0;
+}
+
+/* hover fila */
+tr:hover{ background: #fbfdff; }
+
+/* ====== RESPONSIVE RULES ====== */
+@media (min-width: 820px){
+  /* grid a dos columnas */
+  .form-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+  .form-grid .full{ grid-column: 1 / -1; } /* los que tengan .full ocupan todo */
+  .btn-row{ justify-content:flex-end; }
+}
+
+/* móvil: botones ocupan ancho completo */
+@media (max-width: 819px){
+  .btn-row{ flex-direction: column-reverse; gap:10px; align-items: stretch; }
+  button{ width:100%; }
+  .container{ padding:18px; margin:12px; }
+  h1{ font-size:1.3rem; }
+  input,textarea{ font-size:0.95rem; padding:10px; }
+}
+
+/* Igualar estilos de los select a los inputs existentes */
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d0d7dd;
+  font-size: 0.95rem;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.12s;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  box-sizing: border-box;
+  /* Para que el select tenga estilo similar en distintos navegadores */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg fill="gray" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(41, 128, 185, 0.08);
+  background: #fbfeff;
+}
+
+/* para boton editar */
+.edit-btn {
+  background: #2980b9;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.edit-btn:hover {
+  background: #1f6691;
+}
+
+/* boton para agregar estudiante */
+.btn-yellow {
+  background-color: #f1c40f; /* amarillo vibrante */
+  color: #222; /* texto oscuro para contraste */
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-yellow:hover {
+  background-color: #d4ac0d; /* amarillo más oscuro al pasar el mouse */
+  color: #111;
+}
+
+
+/* procesa el envio */
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0,0,0,0.1);
+  border-top-color: #2980b9; /* color del spinner */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Ajustes generales para la tabla */
+table th, table td {
+  font-size: 14px; /* tamaño base para escritorio */
+  padding: 8px;
+}
+
+/* Ajustes para pantallas pequeñas (celulares) */
+@media screen and (max-width: 600px) {
+  table th, table td {
+    font-size: 10px; /* tamaño reducido para celular */
+    padding: 4px;
+  }
+  
+  /* Puedes ajustar el ancho de las columnas si quieres */
+  table th, table td {
+    white-space: nowrap; /* evitar que el texto se divida */
+  }
+}
+

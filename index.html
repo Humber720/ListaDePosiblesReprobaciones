@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Estudiantes con Posible Reprobación</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>REGISTRO DE POSIBLES REPROBACIONES - 2° TRIMESTRE</h1>
+        <p class="subtitle">Prof. Humberto Yupanqui C., Prof. Raúl Mamani M. - ASOSORES: 2DO DE SECUNDARIA</p>
+        <center><h4>Ingrese los datos de cada estudiante y agréguelo a la lista. Cuando termine, envíe la lista completa.</h4></center>
+        
+        <form id="studentForm">
+            <label for="nombre">Nombre del Estudiante</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+        
+            <label for="area">Área</label>
+            <select id="area" name="area" required>
+                <option value="" disabled selected>Seleccione el área</option>
+                <option value="Comunicación y Lenguajes">COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA</option>
+                <option value="Lenguaje Extranjera">LENGUA EXTRANJERA</option>
+                <option value="Ciencias Sociales">CIENCIAS SOCIALES</option>
+                <option value="Educación Física y Deportes">EDUCACIÓN FÍSICA Y DEPORTES</option>
+                <option value="Educación Musical">EDUCACIÓN MUSICAL</option>
+                <option value="Artes Plásticas y Visuales">ARTES PLÁSTICAS Y VISUALES</option>
+                <option value="Matemática">MATEMÁTICA</option>
+                <option value="Técnica Tecnológica General">TÉCNICA TECNOLÓGICA GENERAL</option>
+                <option value="Ciencias Naturales: Biología - Geografía">CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA</option>
+                <option value="Valores Espiritualidades y Religiones">VALORES, ESPIRITUALIDADES Y RELIGIONES</option>
+                <option value="Psicología">PSICOLOGÍA</option>
+                <option value="Física - Quimica">FÍSICA - QUIMICA</option>
+                <!-- Más áreas -->
+            </select>
+        
+            <label for="maestro">Maestro(a)</label>
+            <select id="maestro" name="maestro" required>
+                <option value="" disabled selected>Seleccione el maestro(a)</option>
+                <option value="Prof. Humberto Yupanqui C.">Prof. Humberto Yupanqui C.</option>
+                <option value="Prof. Raúl Mamani Mamani">Prof. Raúl Mamani Mamani</option>
+                <option value="Prof. Alfonso Castillo Chura">Prof. Alfonso Castillo Chura</option>
+                <option value="Prof. Tito Condori Mayta">Prof. Tito Condori Mayta</option>
+                <option value="Prof. Rene Blanco Rodriguez">Prof. Rene Blanco Rodriguez</option>
+                <option value="Prof. Soledad Condori Herrera">Prof. Soledad Condori Herrera</option>
+                <option value="Prof. Marina M. Macias Cruz">Prof. Marina M. Macias Cruz</option>
+                <option value="Prof. Lilian G. Chambi Jiménez">Prof. Lilian G. Chambi Jiménez</option>
+                <option value="Prof. Vanesa Patty Gutiérrez">Prof. Vanesa Patty Gutiérrez</option>
+                <option value="Prof. Tomas V. Mamani Salas">Prof. Tomas V. Mamani Salas</option>
+                <option value="Prof. Enzo R. Aquino S.">Prof. Enzo R. Aquino S.</option>
+                <option value="Prof. Grover Achata">Prof. Grover Achata</option>
+                <option value="Prof. Jhavana">Giovana E. Larico P.</option>
+                <option value="Prof. Julian F. Alvarado Arraya">Prof. Julian F. Alvarado Arraya</option>
+                <!-- Más maestros -->
+            </select>
+        
+            <label for="nota">Nota de Calificación</label>
+            <input type="number" id="nota" name="nota" min="0" max="100" required>
+        
+            <label for="observacion">Observación</label>
+            <textarea id="observacion" name="observacion" rows="3" placeholder="Ej: No entrega trabajos, ausencias frecuentes..." required></textarea>
+        
+
+            <div class="btn-group">
+                <button type="button" id="addStudent" class="btn-yellow">Agregar Estudiante</button>
+            </div>
+            
+        </form>
+        
+
+        <h2>Lista de Estudiantes Registrados</h2>
+        <p class="table-note">Verifique la información antes de enviar la lista completa.</p>
+
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>Nombre del Estudiante</th>
+                    <th>Área</th>
+                    <th>Maestro(a)</th>
+                    <th>Calificación</th>
+                    <th>Observación</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Filas dinámicas -->
+            </tbody>
+        </table>
+
+        <!-- Botón enviar lista claramente separado -->
+        <div class="send-container">
+            <button id="sendList">📤 Enviar Lista Completa</button>
+            <span id="loadingSpinner" class="spinner" style="display:none;"></span>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar mensaje y opciones -->
+<div id="modal" class="modal" style="display:none; position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index: 9999;">
+    <div class="modal-contenido" style="background:#fff; padding: 20px 30px; border-radius: 12px; max-width: 400px; text-align: center; font-family: 'Segoe UI', Tahoma, sans-serif;">
+      <p id="modal-mensaje">✅ ¡Formulario enviado correctamente!</p>
+      <button id="cerrar-modal" style="margin: 8px 10px; padding: 8px 16px; border:none; border-radius:6px; background:#888; color:#fff; cursor:pointer;">Cerrar</button>
+      <button id="descargarPDF" style="margin: 8px 10px; padding: 8px 16px; border:none; border-radius:6px; background:#2980b9; color:#fff; cursor:pointer; display:none;">Descargar PDF</button>
+    </div>
+  </div>
+  
+      
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  
+    
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
