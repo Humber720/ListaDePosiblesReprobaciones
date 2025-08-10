@@ -55,24 +55,17 @@ function updateTable() {
   studentTable.innerHTML = '';
   students.forEach((student, index) => {
     studentTable.innerHTML += `
-      <tr>
-        <td>${student.nombres}</td>
-        <td>${student.areas}</td>
-        <td>${student.maestros}</td>
-        <td>${student.calificacion}</td>
-        <td>${student.observacion}</td>
-        <td>
-        <button onclick="editStudent(${index})" 
-                style="margin-right:6px; background-color:#28a745; color:white; border:none; padding:6px 12px; border-radius:6px; cursor:pointer;">
-          Editar
-        </button>
-        <button onclick="deleteStudent(${index})" 
-                style="background-color:#dc3545; color:white; border:none; padding:6px 12px; border-radius:6px; cursor:pointer;">
-          Eliminar
-        </button>
-      </td>
-      
-      </tr>
+    <tr>
+    <td>${student.nombres}</td>
+    <td>${student.areas}</td>
+    <td>${student.maestros}</td>
+    <td>${student.calificacion}</td>
+    <td>${student.observacion}</td>
+    <td>
+      <button onclick="editStudent(${index})" class="btn-edit">Editar</button>
+      <button onclick="deleteStudent(${index})" class="btn-delete">Eliminar</button>
+    </td>
+  </tr>  
     `;
   });
 }
@@ -204,3 +197,4 @@ style.textContent = `
   100% { transform: rotate(360deg);}
 }`;
 document.head.appendChild(style);
+
