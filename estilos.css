@@ -314,35 +314,16 @@ table th, table td {
   }
 }
 
- /* PARA BOTONES EDITAR Y ELIMINAR */
-@media (max-width: 600px) {
-  /* En la celda de acción, apilar botones verticalmente sin afectar otras celdas */
-  #studentTable td:last-child {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: stretch; /* que botones ocupen todo el ancho disponible */
-  }
-
-  /* Solo los botones dentro de la celda acción: ancho 100%, tamaño y padding ajustados */
-  #studentTable td:last-child button {
-    width: 100%;
-    font-size: 0.85rem;
-    padding: 6px 8px;
-    white-space: normal; /* permitir texto en varias líneas si es necesario */
-    box-sizing: border-box;
-  }
-}
-/* PARA BOTONES EDITAR Y ELIMINAR */
- .btn-edit {
+/* PARA BOTONES A COLORES EDITAR Y ELIMINAR */
+.btn-edit {
   background-color: #28a745;
   color: white;
   border: none;
-  padding: 6px 12px;
+  padding: 4px 10px;    /* menos padding para botones más pequeños */
   border-radius: 6px;
   cursor: pointer;
   margin-right: 6px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;   /* fuente un poco más chica */
   transition: background-color 0.3s ease;
 }
 
@@ -354,10 +335,10 @@ table th, table td {
   background-color: #dc3545;
   color: white;
   border: none;
-  padding: 6px 12px;
+  padding: 4px 10px;    /* igual padding reducido */
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   transition: background-color 0.3s ease;
 }
 
@@ -375,13 +356,15 @@ table th, table td {
   .btn-edit,
   .btn-delete {
     width: 100%;
-    padding: 8px 0;
+    padding: 6px 0;        /* padding vertical reducido para móvil */
     margin-right: 0;
-    font-size: 0.85rem;
+    font-size: 0.8rem;     /* fuente un poco más pequeña */
+    box-sizing: border-box;
   }
 }
-/* PARA FORSAR BOTONES */
-@media (max-width: 600px) {
+
+ /* PARA FORZAR BOTONES */
+ @media (max-width: 600px) {
   /* Evita que la tabla sea más ancha que el contenedor */
   .container {
     overflow-x: hidden;
@@ -416,7 +399,5 @@ table th, table td {
     padding: 6px 8px !important;
   }
 }
-
-
 
 
